@@ -1,0 +1,90 @@
+{
+  "Routes": [
+
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Ticket/{pnr}",
+      "DownstreamScheme": "https",
+      "ServiceName": "TicketService",
+      "UpstreamPathTemplate": "/api/v1.0/flight/ticket/{pnr}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Airline/register",
+      "ServiceName": "AirlineService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/airline/register",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Airline/inventory/add",
+      "ServiceName": "AirlineService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/airline/inventory/add",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    //{
+    //  "UseServiceDiscovery": true,
+    //  "DownstreamPathTemplate": "/api/1.0/Login",
+    //  "ServiceName": "AdminService",
+    //  "DownstreamScheme": "https",
+    //  "UpstreamPathTemplate": "/api/v1.0/flight/admin/login",
+    //  "UpstreamHttpMethod": [ "Post" ]
+    //},
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Search",
+      "ServiceName": "SearchService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/search",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Booking/{flightNo}",
+      "ServiceName": "BookingService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/booking/{flightNo}",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/Cancel/{pnr}",
+      "ServiceName": "BookingService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/booking/Cancel/{pnr}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/1.0/History/{email}",
+      "ServiceName": "BookingService",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/v1.0/flight/booking/History/{email}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/1.0/Login",
+      //"DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "https://airlinemicroservices20220722113119.azurewebsites.net"
+          //"Port": 44358
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1.0/flight/admin/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44386"
+    //"ServiceDiscoveryProvider": {
+    // "Host": "localhost",
+    //  "Port": "8500",
+    //  "Type": "Consul"
+  }
+  }
+}
